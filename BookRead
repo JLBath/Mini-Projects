@@ -1,0 +1,200 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+/**
+ *
+ * @author jenna
+ */
+public class ITSC1213Lab06 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws Exception{
+        
+        BookChapterReadWrite hello = new BookChapterReadWrite();
+        BookChapter words = hello.loadBookChapterFromFile("game_of_thrones_chapter_1.txt");
+        BookChapter word = hello.loadBookChapterFromFile("moby_dick_chapter_1.txt");
+        System.out.println(words.toString());
+        System.out.println(word.toString());
+        BookChapter wod = hello.loadBookChapterFromFile("slaughterhouse_five_chapter_1.txt");
+        System.out.println(wod.toString());
+        
+        
+        hello.writeBookChapterToFile(words, "test.txt");
+    }
+    
+}
+
+
+import java.util.ArrayList;
+/**
+ *
+ * @author jenna
+ */
+public class BookChapter {
+    
+    private int linesPerPage;
+    private ArrayList<Page> pages;
+    private String title;
+    private String author;
+    
+    
+    public BookChapter(int i){
+        linesPerPage = i;
+    }
+
+    public BookChapter(int i , ArrayList<Page> b){
+        linesPerPage = i;
+        pages = b;
+    }
+    
+    public BookChapter(int i, ArrayList<Page> b, String t, String a){
+        linesPerPage = i;
+        pages = b;
+        title = t;
+        author = a;
+        
+    }
+    public int getLinesPerPage() {
+        return linesPerPage;
+    }
+
+    public void setLinesPerPage(int linesPerPage) {
+        this.linesPerPage = linesPerPage;
+    }
+
+    public ArrayList<Page> getPages() {
+        return pages;
+    }
+
+    public void setPages(ArrayList<Page> pages) {
+        this.pages = pages;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    @Override
+    public String toString(){
+        return title + ", " + author + ", " + pages.size() + " pages, " + linesPerPage + " lines per page.";
+    }
+}
+
+
+
+import java.io.FileInputStream;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ *
+ * @author jenna
+ */
+public class BookChapterReadWrite {
+    
+    public static BookChapter loadBookChapterFromFile(String fileName) throws Exception, IOException{
+        FileInputStream fileByteStream = null;
+        fileByteStream = new FileInputStream(fileName);
+        Scanner inFS = null;
+        inFS = new Scanner(fileByteStream);
+        
+       String ti = inFS.nextLine();
+       String au = inFS.nextLine();
+       int l = inFS.nextInt();
+       inFS.nextLine();
+       
+       
+       
+       
+       ArrayList<Page> chapter = new ArrayList();
+       
+       while(inFS.hasNext()){
+           String[] thePage = new String[l];
+           for(int i = 0; i < l; i++){
+               thePage[i] = inFS.nextLine();
+           }
+           Page thing = new Page(thePage);
+           chapter.add(thing);
+       }
+       
+              BookChapter book = new BookChapter(l, chapter, ti, au );
+     inFS.close();
+        return book;
+    }
+       
+
+    
+    
+    public static void writeBookChapterToFile(BookChapter book, String fileName) throws Exception{
+      FileOutputStream fileByteStream = null; // File output stream
+      PrintWriter outFS = null;               // Output stream
+
+      // Try to open file
+      fileByteStream = new FileOutputStream(fileName);
+      outFS = new PrintWriter(fileByteStream);
+
+      // File is open and valid if we got this far (otherwise exception thrown)
+      // Can now write to file
+      outFS.println(book);
+      outFS.flush();
+
+      // Done with file, so try to close it
+      fileByteStream.close(); // close() may throw IOException if fails
+        
+       /* book chapter book
+            read through each line and write it into a new file
+       */
+	
+    }
+   
+  
+    }
+
+
+
+import java.util.ArrayList;
+/**
+ *
+ * @author jenna
+ */
+public class Page {
+    
+    private String[] lines;
+
+    public Page(int numLines){
+        ArrayList lines = new ArrayList(numLines);
+    }
+    
+    public Page(String[] i){
+        lines = i;
+    }
+    
+    public String[] getLines() {
+        return lines;
+    }
+
+    public void setLines(String[] lines) {
+        this.lines = lines;
+    }
+    
+}
+
