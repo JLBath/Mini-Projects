@@ -1,0 +1,274 @@
+import java.io.IOException;
+//@author Jenna Bath
+public class MagicSquare {
+
+    public static void main(String[] args) throws IOException{
+        
+        isMagicSquare test = new isMagicSquare("2d.txt");
+                
+        test.theNew2DArray();
+
+        test.findTarget();
+
+        if(test.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test.getIdk()+ " is a magic square of order " + test.getLines() + ", and the magic constant is " + test.findTarget());
+        }
+        
+        
+        
+        
+        isMagicSquare test2 = new isMagicSquare("stupidbrandon.txt");
+                
+        test2.theNew2DArray();
+
+        test2.findTarget();
+
+        if(test2.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test2.getIdk()+ " is a magic square of order " + test2.getLines() + ", and the magic constant is " + test2.findTarget());
+        }
+        
+        
+        
+        isMagicSquare test3 = new isMagicSquare("bigstupid.txt");
+                
+        test3.theNew2DArray();
+
+        test3.findTarget();
+
+        if(test3.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test3.getIdk()+ " is a magic square of order " + test3.getLines() + ", and the magic constant is " + test3.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+        isMagicSquare test4 = new isMagicSquare("five.txt");
+                
+        test4.theNew2DArray();
+
+        test4.findTarget();
+
+        if(test4.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test4.getIdk()+ " is a magic square of order " + test4.getLines() + ", and the magic constant is " + test4.findTarget());
+        }
+        
+        
+        isMagicSquare test5 = new isMagicSquare("bigbaby.txt");
+                
+        test5.theNew2DArray();
+
+        test5.findTarget();
+
+        if(test5.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test5.getIdk()+ " is a magic square of order " + test5.getLines() + ", and the magic constant is " + test5.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+         isMagicSquare test6 = new isMagicSquare("letter.txt");
+                
+        test6.theNew2DArray();
+
+        test6.findTarget();
+
+        if(test6.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test6.getIdk()+ " is a magic square of order " + test6.getLines() + ", and the magic constant is " + test6.findTarget());
+        }
+    }
+    
+}
+
+
+
+
+
+
+import java.io.IOException;
+//@author Jenna Bath
+public class MagicSquare {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException{
+        
+        isMagicSquare test = new isMagicSquare("2d.txt");
+                
+        test.theNew2DArray();
+
+        test.findTarget();
+
+        if(test.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test.getIdk()+ " is a magic square of order " + test.getLines() + ", and the magic constant is " + test.findTarget());
+        }
+        
+        
+        
+        
+        isMagicSquare test2 = new isMagicSquare("stupidbrandon.txt");
+                
+        test2.theNew2DArray();
+
+        test2.findTarget();
+
+        if(test2.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test2.getIdk()+ " is a magic square of order " + test2.getLines() + ", and the magic constant is " + test2.findTarget());
+        }
+        
+        
+        
+        isMagicSquare test3 = new isMagicSquare("bigstupid.txt");
+                
+        test3.theNew2DArray();
+
+        test3.findTarget();
+
+        if(test3.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test3.getIdk()+ " is a magic square of order " + test3.getLines() + ", and the magic constant is " + test3.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+        isMagicSquare test4 = new isMagicSquare("five.txt");
+                
+        test4.theNew2DArray();
+
+        test4.findTarget();
+
+        if(test4.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test4.getIdk()+ " is a magic square of order " + test4.getLines() + ", and the magic constant is " + test4.findTarget());
+        }
+        
+        
+        isMagicSquare test5 = new isMagicSquare("bigbaby.txt");
+                
+        test5.theNew2DArray();
+
+        test5.findTarget();
+
+        if(test5.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test5.getIdk()+ " is a magic square of order " + test5.getLines() + ", and the magic constant is " + test5.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+         isMagicSquare test6 = new isMagicSquare("letter.txt");
+                
+        test6.theNew2DArray();
+
+        test6.findTarget();
+
+        if(test6.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test6.getIdk()+ " is a magic square of order " + test6.getLines() + ", and the magic constant is " + test6.findTarget());
+        }
+    }
+    
+}
+
