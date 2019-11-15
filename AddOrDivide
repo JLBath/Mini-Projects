@@ -1,0 +1,147 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.lang.ArithmeticException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+
+public class ITSC1213Lab07 {
+
+    public static void main(String[] args) {
+
+        //ITSC1213Lab07.addUserInput();
+        ITSC1213Lab07.divideUserInput();
+        //ITSC1213Lab07.addFromFile("stupidstuff.txt");
+    }
+
+    public static void addUserInput() {
+        boolean tuna = true;
+        boolean seahorse = true;
+        int platy = 0;
+        int swordfish = 0;
+        while (seahorse == true) {
+            try {
+                Scanner fish = new Scanner(System.in);
+                System.out.println("Please enter an integer");
+                platy = fish.nextInt();
+                if (platy < 0) {
+                    throw new NegativeNumberException("Some error message");
+                }
+                seahorse = false;
+            } catch (InputMismatchException cory) {
+                System.out.println("Invalid input: " + cory.getMessage());
+            } catch (NegativeNumberException emu) {
+                System.out.println("No negative numbers, please");
+            }
+
+        }
+        while (tuna == true) {
+            try {
+                Scanner fish = new Scanner(System.in);
+                System.out.println("Please enter a second integer");
+                swordfish = fish.nextInt();
+                if (swordfish < 0) {
+                    throw new NegativeNumberException("Some error message");
+                }
+                tuna = false;
+            } catch (InputMismatchException cory) {
+                System.out.println("Invalid input: " + cory.getMessage());
+            } catch (NegativeNumberException emu) {
+                System.out.println("No negative numbers, please");
+            }
+        }
+        System.out.println("The sum is " + (platy + swordfish));
+    }
+
+    public static void divideUserInput() {
+        boolean molly = true;
+        boolean pufferfish = true;
+        boolean guppy = true;
+        int koi = 0;
+        int goldfish = 0;
+        while (molly == true) {
+            try {
+                Scanner fish = new Scanner(System.in);
+                System.out.println("Please enter an integer");
+                koi = fish.nextInt();
+                if (koi < 0) {
+                    throw new NegativeNumberException("Some error message");
+                }
+                molly = false;
+            } catch (InputMismatchException cory) {
+                System.out.println("Invalid input: " + cory.getMessage());
+            } catch (ArithmeticException jellyfish) {
+                System.out.println("Invalid input: " + jellyfish.getMessage());
+            } catch (NegativeNumberException emu) {
+                System.out.println("No negative numbers, please");
+            }
+        }
+
+        while (pufferfish == true) {
+            try {
+                Scanner fish = new Scanner(System.in);
+                System.out.println("Please enter a second integer");
+                goldfish = fish.nextInt();
+                if (goldfish < 0) {
+                    throw new NegativeNumberException("Some error message");
+                }
+                if (goldfish == 0) {
+                    System.out.println(1 / 0);
+                }
+                pufferfish = false;
+            } catch (InputMismatchException cory) {
+                System.out.println("Invalid input: " + cory.getMessage());
+            } catch (ArithmeticException betta) {
+                System.out.println("Invalid input: " + betta.getMessage());
+            } catch (NegativeNumberException emu) {
+                System.out.println("No negative numbers, please");
+            }
+        }
+
+        System.out.println("The quotient is " + (koi / goldfish));
+
+    }
+
+    public static void addFromFile(String fileName) {
+        try {
+            File myFile = new File(fileName);
+            Scanner myScanner = new Scanner(myFile);
+            String[] parakeet = myScanner.nextLine().split(", ");
+            int first = Integer.parseInt(parakeet[0]);
+            int second = Integer.parseInt(parakeet[1]);
+            System.out.println(first + second);
+            myScanner.close();
+        } catch (NullPointerException oscar) {
+            System.out.println("Null pointer exception");
+        } catch (FileNotFoundException zebra) {
+            System.out.println("File not found");
+        } catch (Exception gourami) {
+            System.out.println("Something went wrong");
+        }
+    }
+
+    public static void divideFromFile(String fileName) {
+        File myFile = new File(fileName);
+        Scanner myScanner = new Scanner(System.in);
+    }
+}
+
+
+
+
+
+
+
+public class NegativeNumberException extends Exception {
+    
+    public NegativeNumberException(String errorMessage){
+        super(errorMessage);
+    }
+    
+    
+}
+
+
+
+
+
