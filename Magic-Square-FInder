@@ -1,0 +1,288 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.lang.Math;
+
+/**
+ *
+ * @author jenna
+ */
+public class isMagicSquare {
+
+    ArrayList<Integer> idk = new ArrayList<>();
+    int[][] magicNumbers;
+    int lines = 0;
+    String fileName;
+
+    public ArrayList<Integer> getIdk() {
+        return idk;
+    }
+
+    public int[][] getMagicNumbers() {
+        return magicNumbers;
+    }
+
+    public int getLines() {
+        return lines;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public isMagicSquare(String f) {
+        fileName = f;
+    } //constructor to get file name
+
+    public int findTarget() {
+        int sum = 0;
+        for (int i = 0; i < magicNumbers[0].length; i++) {
+            sum += magicNumbers[i][0];
+  
+        }
+        return sum;
+    } //returns the sum of numbers that the first row produces
+
+    public boolean rowIsTarget() {
+        for (int r = 0; r < magicNumbers.length; r++) {
+            int rowSum = 0;
+            for (int c = 0; c < magicNumbers[0].length; c++) {
+                rowSum += magicNumbers[r][c];
+            }
+            if (findTarget() != rowSum) {
+                return false;
+            }
+        }
+        return true;
+    } // uses the target to see if the sum of the subsequent rows match
+
+    public boolean columnIsTarget() {
+
+        for (int r = 0; r < magicNumbers.length; r++) {
+            int sum = 0;
+            for (int c = 0; c < magicNumbers[0].length; c++) {
+                sum += magicNumbers[c][r];
+            }
+            if (sum != findTarget()) {
+                return false;
+            }
+        }
+        return true;
+    } //uses the target to see if the sum of the columns match
+
+    public boolean diagIsTarget() {
+        int first = 0;
+        int second = 0;
+        for (int r = 0; r < lines; r++) {
+            for (int c = 0; c < lines; c++) {
+                if (r == c) {
+                    first += magicNumbers[r][c];
+                    second += magicNumbers[r][lines - 1 - c];
+                }
+            }
+        }
+        if (first != findTarget() || second != findTarget()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean eachNumUnique() {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < magicNumbers.length; i++) {
+            for (int j = 0; j < magicNumbers[0].length; j++) {
+                list.add(magicNumbers[i][j]);
+            }
+        } //creates an arraylist of all the elements in the 2d array
+        int[] values = new int[list.size()];
+        for (int x = 0; x < values.length; x++) {
+            values[x] = list.get(x);
+        } // puts the arraylist into a regular array
+
+        for (int a = 0; a < values.length; a++) {
+            for (int b = a + 1; b < values.length; b++) {
+                if (values[a] == values[b]) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
+    public void theNew2DArray() throws IOException {
+        FileInputStream fileByteStream = null;
+        Scanner inFS = null;
+        fileByteStream = new FileInputStream(fileName);
+        inFS = new Scanner(fileByteStream);
+
+        while (inFS.hasNextInt()) {
+            idk.add(inFS.nextInt());
+            lines++;
+        }
+        lines = (int) Math.sqrt(lines);
+        magicNumbers = new int[lines][lines];
+
+        int a = 0;
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < lines; j++) {
+                magicNumbers[i][j] = idk.get(a);
+                a++;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//NEW CLASS
+import java.io.IOException;
+/**
+ *
+ * @author jenna
+ */
+public class MagicSquare {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException{
+        
+        isMagicSquare test = new isMagicSquare("2d.txt");
+                
+        test.theNew2DArray();
+
+        test.findTarget();
+
+        if(test.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else if(test.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test.getIdk()+ " is a magic square of order " + test.getLines() + ", and the magic constant is " + test.findTarget());
+        }
+        
+        
+        
+        
+        isMagicSquare test2 = new isMagicSquare("stupidbrandon.txt");
+                
+        test2.theNew2DArray();
+
+        test2.findTarget();
+
+        if(test2.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else if(test2.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test2.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test2.getIdk()+ " is a magic square of order " + test2.getLines() + ", and the magic constant is " + test2.findTarget());
+        }
+        
+        
+        
+        isMagicSquare test3 = new isMagicSquare("bigstupid.txt");
+                
+        test3.theNew2DArray();
+
+        test3.findTarget();
+
+        if(test3.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else if(test3.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test3.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test3.getIdk()+ " is a magic square of order " + test3.getLines() + ", and the magic constant is " + test3.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+        isMagicSquare test4 = new isMagicSquare("five.txt");
+                
+        test4.theNew2DArray();
+
+        test4.findTarget();
+
+        if(test4.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else if(test4.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test4.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test4.getIdk()+ " is a magic square of order " + test4.getLines() + ", and the magic constant is " + test4.findTarget());
+        }
+        
+        
+        isMagicSquare test5 = new isMagicSquare("bigbaby.txt");
+                
+        test5.theNew2DArray();
+
+        test5.findTarget();
+
+        if(test5.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else if(test5.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test5.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test5.getIdk()+ " is a magic square of order " + test5.getLines() + ", and the magic constant is " + test5.findTarget());
+        }
+        
+        
+        
+        
+        
+        
+         isMagicSquare test6 = new isMagicSquare("letter.txt");
+                
+        test6.theNew2DArray();
+
+        test6.findTarget();
+
+        if(test6.columnIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.rowIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.diagIsTarget() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else if(test6.eachNumUnique() == false){
+            System.out.println("The combination of numbers " + test6.getIdk() + " is not a magic square");
+        } else {
+            System.out.println("The combination of numbers " + test6.getIdk()+ " is a magic square of order " + test6.getLines() + ", and the magic constant is " + test6.findTarget());
+        }
+    }
+    
+}
